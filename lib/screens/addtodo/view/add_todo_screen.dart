@@ -86,7 +86,7 @@ class AddingTaskScreen extends StatelessWidget {
                                           .toString()
                                           .substring(0, 10),
                                       style:
-                                          Theme.of(context).textTheme.headline6,
+                                          Theme.of(context).textTheme.labelLarge,
                                     ),
                                     const Spacer(),
                                     IconButton(

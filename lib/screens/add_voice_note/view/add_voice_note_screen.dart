@@ -61,13 +61,16 @@ class AddVoiceNoteScreen extends StatelessWidget {
                               ? const SizedBox()
                               : Container(
                                   margin: const EdgeInsets.all(10),
-                                  child: VoiceMessage(
-                                    audioSrc: controller.filePath,
-                                    me: true,
-                                    showDuration: false,
-                                    radius: 20,
-                                    meBgColor: AppColor.mainColor1,
-                                    onPlay: () {},
+                                  child: VoiceMessageView(
+                                    backgroundColor: AppColor.mainColor1,
+                                    controller: VoiceController(
+                                        audioSrc: controller.filePath,
+                                        maxDuration:
+                                            const Duration(minutes: 10),
+                                        isFile: true,
+                                        onComplete: () {},
+                                        onPause: () {},
+                                        onPlaying: () {}),
                                   ),
                                 ),
                           Expanded(
@@ -81,24 +84,27 @@ class AddVoiceNoteScreen extends StatelessWidget {
                                 RecordControlleshape(
                                     heroTag: "tag1",
                                     onTap: () {
-                                      controller.restartRecord();
+                                      // controller.restartRecord();
                                     },
                                     icon: FontAwesomeIcons.arrowsRotate,
                                     size: 25),
                                 controller.isRecording
-                                    ? SizedBox()
+                                    ? const SizedBox()
                                     : RecordControlleshape(
                                         heroTag: "tag2",
-                                        onTap: () => controller.startRecord(),
+                                        onTap: () {
+                                          // controller.startRecord();
+                                        },
                                         icon: FontAwesomeIcons.microphoneLines,
                                         size: 35),
-                              if( controller.isRecording) 
-                                     RecordControlleshape(
-                                        heroTag: "tag3",
-                                        onTap: () => controller.stopRecord(),
-                                        icon: FontAwesomeIcons.pause,
-                                        size: 25)
-                                    ,
+                                if (controller.isRecording)
+                                  RecordControlleshape(
+                                      heroTag: "tag3",
+                                      onTap: () {
+                                        // controller.stopRecord();
+                                      },
+                                      icon: FontAwesomeIcons.pause,
+                                      size: 25),
                               ],
                             ),
                           ),

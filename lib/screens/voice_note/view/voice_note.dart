@@ -16,7 +16,7 @@ class VoiceNoteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    
+
     return BlocBuilder<AppController, AppStates>(
       builder: (context, state) {
         final controller = AppController.get(context);
@@ -48,8 +48,8 @@ class VoiceNoteScreen extends StatelessWidget {
                             size: MediaQuery.of(context).size,
                             text: AppString.noNote.tr())
                         : ListView.separated(
-                          shrinkWrap: true,
-                             padding: EdgeInsets.symmetric(
+                            shrinkWrap: true,
+                            padding: EdgeInsets.symmetric(
                               vertical: size.longestSide * .007,
                             ),
                             itemBuilder: (context, index) {
@@ -69,7 +69,13 @@ class VoiceNoteScreen extends StatelessWidget {
                                                         .toString() ==
                                                     "en"
                                                 ? TextAlign.left
-                                                : TextAlign.right,style: TextStyle(fontSize:MediaQuery.of(context).size.width*.05,fontWeight: FontWeight.w500),
+                                                : TextAlign.right,
+                                            style: TextStyle(
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .width *
+                                                    .05,
+                                                fontWeight: FontWeight.w500),
                                           ),
                                           const Spacer(),
                                           IconButton(
@@ -86,16 +92,22 @@ class VoiceNoteScreen extends StatelessWidget {
                                           )
                                         ],
                                       ),
-                                      const SizedBox(height: 5,),
-                                      VoiceMessage(
-                                        audioSrc: controller.voiceNote[index]
-                                                ["voiceNote"]
-                                            .toString(),
-                                        me: true,
-                                        showDuration: false,
-                                        radius: 20,
-                                        meBgColor: AppColor.mainColor1,
-                                        onPlay: () {},
+                                      const SizedBox(
+                                        height: 5,
+                                      ),
+                                      VoiceMessageView(
+                                        controller: VoiceController(
+                                          audioSrc: controller.voiceNote[index]
+                                                  ["voiceNote"]
+                                              .toString(),
+                                          maxDuration:
+                                              const Duration(minutes: 10),
+                                          isFile: false,
+                                          onComplete: () {},
+                                          onPause: () {},
+                                          onPlaying: () {},
+                                        ),
+                                        backgroundColor: AppColor.mainColor1,
                                       )
                                     ],
                                   ),

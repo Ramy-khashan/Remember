@@ -38,7 +38,7 @@ class StartEndTimeItem extends StatelessWidget {
               children: [
                 Text(
                   time,
-                  style: Theme.of(context).textTheme.headline6,
+                  style: Theme.of(context).textTheme.headlineLarge,
                 ),
                 const Spacer(),
                 IconButton(

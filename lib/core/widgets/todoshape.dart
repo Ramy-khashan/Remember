@@ -71,7 +71,7 @@ class TodoShapeItem extends StatelessWidget {
                 const Spacer(),
                 Checkbox(
                     hoverColor: Colors.transparent,
-                    fillColor: MaterialStateProperty.all(AppColor.mainColor2),
+                    fillColor: WidgetStateProperty.all(AppColor.mainColor2),
                     value: todo["isDone"] == 0 ? false : true,
                     onChanged: (val) {
                       onChanged(val!);

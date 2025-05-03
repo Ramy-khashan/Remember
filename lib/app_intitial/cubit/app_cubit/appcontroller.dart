@@ -200,8 +200,7 @@ class AppController extends Cubit<AppStates> {
             notificationTitle: 'Remember Task',
             notificationBody: headController.text.trim(),
           assetAudioPath: "assets/music/mozart.wav",
-            stopOnNotificationOpen: false,
-          );
+           );
           return alarmSettings;
         }
 
@@ -277,7 +276,7 @@ class AppController extends Cubit<AppStates> {
           notificationTitle: 'Remember Task',
           notificationBody: headController.text.trim(),
           assetAudioPath: "assets/music/mozart.wav",
-          stopOnNotificationOpen: false,
+          // stopOnNotificationOpen: false,
         );
         return alarmSettings;
       }
@@ -337,7 +336,7 @@ Alarm.stop(        todo["id"]);
           notificationTitle: 'Remember Task',
           notificationBody:todo["date"],
           assetAudioPath: "assets/music/mozart.wav",
-          stopOnNotificationOpen: false,
+          // stopOnNotificationOpen: false,
         );
         return alarmSettings;
       }

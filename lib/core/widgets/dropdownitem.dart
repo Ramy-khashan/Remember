@@ -48,7 +48,7 @@ class DropDownListItem extends StatelessWidget {
                 Icons.keyboard_arrow_down_outlined,
                 color: AppColor.mainColor2,
               ),
-              style: Theme.of(context).textTheme.headline6,
+              style: Theme.of(context).textTheme.headlineLarge,
               onChanged: onChange,
               items: listType.map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(

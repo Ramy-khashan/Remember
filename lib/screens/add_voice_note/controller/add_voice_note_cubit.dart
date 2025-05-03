@@ -44,7 +44,7 @@ class AddVoiceNoteCubit extends Cubit<AddVoiceNoteState> {
   @override
   Future<void> close() {
     record.dispose();
-    isRecording=false;
+    isRecording = false;
     return super.close();
   }
 
@@ -52,17 +52,19 @@ class AddVoiceNoteCubit extends Cubit<AddVoiceNoteState> {
   Timer? timer;
   String recordDuration = "00:00";
   bool isRecording = false;
-  late Record record;
+  late AudioRecorder record;
   startRecord() async {
-    if (await Record().hasPermission()) {
+    if (await AudioRecorder().hasPermission()) {
       isRecording = true;
-      record = Record();
+      record = AudioRecorder();
       await record.start(
+        const RecordConfig(
+          encoder: AudioEncoder.aacLc,
+          bitRate: 128000,
+          sampleRate: 44100,
+        ),
         path:
             "${(await getApplicationDocumentsDirectory()).path}audio_${DateTime.now().millisecondsSinceEpoch}.m4a",
-        encoder: AudioEncoder.aacLc,
-        bitRate: 128000,
-        samplingRate: 44100,
       );
       if (await record.isRecording()) {
         startTime = DateTime.now();
@@ -98,7 +100,7 @@ class AddVoiceNoteCubit extends Cubit<AddVoiceNoteState> {
   }
 
   restartRecord() async {
-    isRecording=false;
+    isRecording = false;
     emit(AddVoiceNoteInitial());
     await record.stop();
     record.dispose();
@@ -138,7 +140,8 @@ class AddVoiceNoteCubit extends Cubit<AddVoiceNoteState> {
         .then((value) {
       Navigator.pushAndRemoveUntil(
           context,
-          MaterialPageRoute(builder: (context) => MainScreen(initialIndex: 2)),
+          MaterialPageRoute(
+              builder: (context) => const MainScreen(initialIndex: 2)),
           (route) => false);
     });
     isLoadingAdd = false;

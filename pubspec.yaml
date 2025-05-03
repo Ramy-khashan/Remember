@@ -37,14 +37,14 @@ dependencies:
   flutter_bloc:  
   flutter_colorpicker: null 
   fluttertoast:  
-  alarm: 
+  alarm: ^3.1.7
   font_awesome_flutter:   
   image_picker:  
   intl: null 
   path: 
   path_provider: null
   permission_handler:  
-  record: null
+  record: ^5.0.0
   shared_preferences: null
   shrink_sidemenu: null
   sqflite:   
